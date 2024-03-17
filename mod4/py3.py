@@ -9,22 +9,22 @@ class TestRegistrationApp(unittest.TestCase):
         app.config["WTF_CSRF_ENABLED"] = False
         self.app = app.test_client()
         self.base_url = "/registration"
-        self.valid_args = dict(email="dima.postnicov.04@mail.ru", phone=9223352924,
+        self.valid_args = dict(email="dima.postnikov.04@mail.ru", phone=9223352924,
                                name="Dmitry", address="Lenina 4",
                                index=413722, comment="коммент")
 
     def test_email_valid(self):
         response = self.app.post(self.base_url, data=self.valid_args)
         self.assertIn("Successfully", response.data.decode())
-        self.valid_args["email"] = "dima.postnicov.04@mail.ru"
+        self.valid_args["email"] = "dima.postnikov.04@mail.ru"
         response = self.app.post(self.base_url, data=self.valid_args)
         self.assertIn("Successfully", response.data.decode())
 
     def test_email_invalid(self):
-        self.valid_args["email"] = "dima.postnicov.04"
+        self.valid_args["email"] = "dima.postnikov.04"
         response = self.app.post(self.base_url, data=self.valid_args)
         self.assertNotIn("Successfully", response.data.decode())
-        self.valid_args["email"] = "dima.postnicov.04@mail"
+        self.valid_args["email"] = "dima.postnikov.04@mail"
         response = self.app.post(self.base_url, data=self.valid_args)
         self.assertNotIn("Successfully", response.data.decode())
 
@@ -75,7 +75,7 @@ class TestRegistrationApp(unittest.TestCase):
     def test_address_valid(self):
         response = self.app.post(self.base_url, data=self.valid_args)
         self.assertIn("Successfully", response.data.decode())
-        self.valid_args["address"] = 21341
+        self.valid_args["address"] = "Lenina 4"
         response = self.app.post(self.base_url, data=self.valid_args)
         self.assertIn("Successfully", response.data.decode())
 
@@ -104,7 +104,7 @@ class TestRegistrationApp(unittest.TestCase):
     def test_comment_valid(self):
         response = self.app.post(self.base_url, data=self.valid_args)
         self.assertIn("Successfully", response.data.decode())
-        self.valid_args["comment"] = 413722
+        self.valid_args["comment"] = "коммент"
         response = self.app.post(self.base_url, data=self.valid_args)
         self.assertIn("Successfully", response.data.decode())
 
