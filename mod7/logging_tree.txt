@@ -1,0 +1,16 @@
+<--""
+   Level WARNING
+   |
+   o<--"app"
+   |   Level DEBUG
+   |   Handler <DifferentLevels (DEBUG)>
+   |     Level DEBUG
+   |     Filter <dict_configuration.ASCII object at 0x000001AD4ADBCBE0>
+   |     Formatter fmt='%(levelname)s | %(name)s | %(asctime)s | %(lineno)s | %(message)s' datefmt=None
+   |
+   o<--"utils"
+       Level INFO
+       Handler TimedRotatingFile 'C:\\Users\\ִלטענטי\\Desktop\\mod7\\utils.log' when='H' interval=36000 backupCount=1
+         Level INFO
+         Filter <dict_configuration.ASCII object at 0x000001AD4ADBCBE0>
+         Formatter fmt='%(levelname)s | %(name)s | %(asctime)s | %(lineno)s | %(message)s' datefmt=None
